@@ -46,6 +46,7 @@ public class PDFView extends com.github.barteksc.pdfviewer.PDFView implements
     private ReadableMap urlProps;
     private int fadeInDuration = 0;
     private float lastPositionOffset = 0;
+    private int defaultPage = 0;
 
     public PDFView(ThemedReactContext context) {
         super(context, null);
@@ -110,13 +111,13 @@ public class PDFView extends com.github.barteksc.pdfviewer.PDFView implements
         lastPositionOffset = 0;
         this.setAlpha(0);
         configurator
-                .defaultPage(0)
+                .defaultPage(this.defaultPage)
                 .swipeHorizontal(false)
                 .onLoad(this)
                 .onError(this)
                 .onPageChange(this)
                 .onPageScroll(this)
-                .spacing(10)
+                .spacing(0)
                 .load();
         sourceChanged = false;
     }
@@ -227,6 +228,10 @@ public class PDFView extends com.github.barteksc.pdfviewer.PDFView implements
         }
 
         return !str1.equals(str2);
+    }
+
+    public void setDefaultPage(int defaultPage) {
+        this.defaultPage = defaultPage;
     }
 
     public void setResource(String resource) {

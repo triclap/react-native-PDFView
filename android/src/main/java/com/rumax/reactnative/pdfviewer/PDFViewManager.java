@@ -75,6 +75,11 @@ public class PDFViewManager extends SimpleViewManager<PDFView> {
         pdfView.onDrop();
     }
 
+    @ReactProp(name = "defaultPage")
+    public void setDefaultPage(PDFView pdfView, int defaultPage) {
+        pdfView.setDefaultPage(defaultPage);
+    }
+
     @ReactProp(name = "resource")
     public void setResource(PDFView pdfView, String resource) {
         pdfView.setResource(resource);
